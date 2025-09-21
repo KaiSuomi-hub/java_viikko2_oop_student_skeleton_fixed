@@ -15,28 +15,45 @@
  *  - Älä käytä ArrayListiä tai muita kokoelmia.
  *  - Ei käyttäjän syötteitä metodeissa; testaa `main()`ista.
  */
-
 package fi.viikko2.task01;
 
+import java.util.Objects;
+
 public class Person {
+    // 1. kentät name ja age tai paremmin fieldit
+    private String name;
+    private int age;
 
+    //2. Konstruktori name + age
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
 
+    //2. Konstruktori vain name (ikä oletuksena 0)
+    public Person(String name) {
+        this(name, 0);
+    }
 
+    //3. birthday(): kasvattaa iän yhdellä ja palauttaa uusi ikä
+    public int birthday() {
+        this.age++;
+        return this.age;
+    }
 
-   
+    @Override
+    public String toString() {
+        //4.  Toteuta ja palauta merkkijono. Kun olet valmis, POISTA alla oleva rivi.
+        return "Person{name='" + name + "', age=" + age + "}";
+    }
 
-@Override
-public String toString() {
-    //  Toteuta ja palauta merkkijono. Kun olet valmis, POISTA alla oleva rivi.
-    throw new UnsupportedOperationException("TODO: implement toString()");
-
-}
-
-@Override
-public boolean equals(Object o) {
-    //  Toteuta equals. Kun olet valmis, POISTA alla oleva rivi.
-    throw new UnsupportedOperationException("TODO: implement equals(Object)");
-
-}
-
+    @Override
+    public boolean equals(Object o) {
+        //5.  Toteuta equals. Kun olet valmis, POISTA alla oleva rivi.
+        if (this == o) return true;
+        if (!(o instanceof Person)) return false;
+        Person other = (Person) o;
+        return this.age == other.age &&
+                Objects.equals(this.name, other.name);
+    }
 }

@@ -18,8 +18,15 @@ package fi.viikko2.task02;
 public class Main {
     public static void main(String[] args) {
         int[] a = {1,2,3};
-        double[] b = {1.5,2.5,3.0};
-        System.out.println(MathUtil.placeholderInt());
-        System.out.println(MathUtil.placeholderDouble());
+        double[] b = { 1.5, 2.5, 3.0 };
+        // 10. Sum metodien testaus
+        System.out.println("int[] sum: " + MathUtil.sum(a));
+        System.out.println("1+2=" + MathUtil.sum(a[0], a[1]));
+        System.out.println("1+2+3=" + MathUtil.sum(a[0], a[1], a[2]));
+        // double[] sum metodin testaus
+        System.out.println("double[] sum: " + MathUtil.sum(b));
+        // Max ja min metodien testaus
+        System.out.println("int[] max: " + MathUtil.max(a));
+        System.out.println("int[] min: " + MathUtil.min(a));
     }
 }
