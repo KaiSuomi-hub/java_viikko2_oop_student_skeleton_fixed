@@ -16,50 +16,63 @@
  */
 
 package fi.viikko2.task03;
+
 import java.util.Objects;
 public class BankAccount {
 
-    // 11. kentät accountNumber ja balance tai paremmin fieldit
-    private String accountNumber;
-    private double balance;
-    // 12. Konstruktori: jos initialBalance < 0 -> nollaa.
-    public BankAccount(String accountNumber, double initialBalance) {
-        this.accountNumber = accountNumber;
-        this.balance = initialBalance < 0 ? 0 : initialBalance;
-    }
-    // 13. deposit(amount): talleta summa, jos amount > 0, palauta uusi saldo
-    public boolean deposit(double amount) {
-        if (amount <= 0) {
-            return false; // ei sallita nollaa tai negatiivista
+        // 11. kentät accountNumber ja balance tai paremmin fieldit
+        private String accountNumber;
+        private double balance;
+        // 12. Konstruktori: jos int initialBalance < 0 -> nollaa.
+        public BankAccount(String accountNumber, int initialBalance) {
+            this.accountNumber = accountNumber;
         }
-        balance += amount;
-        return true;
-    }
-    // 13. withdraw(amount): nosta summa, jos amount > 0 ja riittää saldo, palauta uusi saldo
-    public boolean withdraw(double amount) {
-        if (amount <= 0 || amount > balance) {
-            return false; // ei sallita negatiivista tai yliottoa
+        // overloadataan konstruktori jotta saadaan balance asetettua oikein
+        public BankAccount(String accountNumber, double initialBalance) {
+            this.accountNumber = accountNumber;
+            this.balance = initialBalance < 0 ? 0 : initialBalance;
         }
-        balance -= amount;
-        return true;
-    }
-    // 14. getBalance(): palauttaa saldon
-    public double getBalance() {
-        return balance;
-    }
-    @Override
-    public String toString(){
-        //  Toteuta ja palauta merkkijono. Kun olet valmis, POISTA alla oleva rivi.
-        return "BankAccount{accountNumber='" + accountNumber + "', balance=" + balance + "}";
-    }
 
-    @Override
-    public boolean equals(Object o){
-        //  Toteuta ja palauta merkkijono. Kun olet valmis, POISTA alla oleva rivi.
-        if (this == o) return true;
-        if (!(o instanceof BankAccount))
-            return false;
-        BankAccount other = (BankAccount) o;
-        return Objects.equals(this.accountNumber, other.accountNumber);
-    }
+        
+        // 13. deposit(int amount): talleta summa, jos amount > 0, palauta uusi saldo
+
+        public boolean deposit(int amount) {
+            return deposit((double) amount);
+        }
+        public boolean deposit(double amount) {
+            if (amount <= 0) {
+                return false; // ei sallita nollaa tai negatiivista
+                }
+            balance += amount;
+            return true;
+        }
+        // 13. withdraw(int amount): nosta summa, jos amount > 0 ja riittää saldo, palauta uusi saldo
+        public boolean withdraw(int amount) {
+            return withdraw((double) amount);
+        }
+        public boolean withdraw(double amount) {
+            if (amount <= 0 || amount > balance) {
+                return false; // ei sallita negatiivista tai yliottoa
+                }
+            balance -= amount;
+            return true;
+        }
+        // 14. getBalance(): palauttaa saldon double-arvona
+        public double getBalance() {
+            return balance;
+        }
+        public String toString(){
+            //  Toteuta ja palauta merkkijono. Kun olet valmis, POISTA alla oleva rivi.
+            return "BankAccount{accountNumber='" + accountNumber + "', balance=" + balance + "}";
+        }
+
+        public boolean equals(Object o){
+            //  Toteuta ja palauta merkkijono. Kun olet valmis, POISTA alla oleva rivi.
+            if (this == o) return true;
+            if (!(o instanceof BankAccount))
+
+                return false;
+            BankAccount other = (BankAccount) o;
+            return Objects.equals(this.accountNumber, other.accountNumber);
+        }
 }

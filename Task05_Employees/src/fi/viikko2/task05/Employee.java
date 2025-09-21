@@ -16,15 +16,34 @@
 
 package fi.viikko2.task05;
 
+import java.util.Objects;
+//22. paketti fi.viikko2.task05. Perusluokka Employee(name).
+
 public class Employee {
     // TODO: protected String name;
     // TODO: public Employee(String name){ ... }
+    protected String name;
 
-    public double monthlyPay(){ return 0.0; }
+    public Employee(String name) {
+        this.name = name;
+    }
+//24. Lisää metodi double monthlyPay() Employeeen (palauttaa 0) ja ylikirjoita aliluokissa.
+
+    public double monthlyPay() {
+        return 0.0; // Default implementation, should be overridden in subclasses
+    }
+    @Override
+    public String toString(){ return "Employee{name='" + name + "'}"; }
+//25. Ylikirjoita toString() ja equals(Object) (esim. sama nimi + sama alatyyppi).
 
     @Override
-    public String toString(){ throw new UnsupportedOperationException("TODO: implement toString()"); }
+    public boolean equals(Object o) {
+   if (this == o) return true;
+        if (!(o instanceof Employee)) return false;
+        Employee other = (Employee) o;
+        // Sama nimi ja sama alatyyppi
+        return Objects.equals(this.name, other.name) &&
+               this.getClass().equals(other.getClass());
 
-    @Override
-    public boolean equals(Object o){ throw new UnsupportedOperationException("TODO: implement equals(Object)"); }
+    }
 }

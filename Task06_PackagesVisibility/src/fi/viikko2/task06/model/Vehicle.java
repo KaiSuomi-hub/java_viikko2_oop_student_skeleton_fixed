@@ -19,10 +19,21 @@ package fi.viikko2.task06.model;
 public class Vehicle {
     // TODO: protected String brand;
     // TODO: int mileage;
-
+    // 27. protected String brand; int mileage
+    protected String brand;
+    int mileage;
     // TODO: public Vehicle(String brand, int mileage){ ... }
+    public Vehicle(String brand, int mileage) {
+        this.brand = brand;
+        this.mileage = mileage;
+    }
     // TODO: public String getBrand(){ ... }
-
+    public String getBrand() {
+        return brand;
+    }
     @Override
-    public String toString(){ throw new UnsupportedOperationException("TODO: implement toString()"); }
+    public String toString() {
+        return "Vehicle{brand='" + brand + "', mileage=" + mileage + "}";
+
+     }
 }

@@ -15,14 +15,27 @@
  */
 
 package fi.viikko2.task05;
-
+// 23. Aliluokat: HourlyEmployee(name, hourlyRate, hoursPerMonth)
 public class HourlyEmployee extends Employee {
     // TODO: private double hourlyRate; private double hoursPerMonth;
     // TODO: public HourlyEmployee(String name, double hourlyRate, double hoursPerMonth){ super(name); ... }
 
-    @Override
-    public double monthlyPay(){ throw new UnsupportedOperationException("TODO: implement monthlyPay()"); }
+    private double hourlyRate;
+    private double hoursPerMonth;
 
+     public HourlyEmployee(String name, double hourlyRate, double hoursPerMonth) {
+        super(name);
+        this.hourlyRate = hourlyRate;
+        this.hoursPerMonth = hoursPerMonth;
+    }
     @Override
-    public String toString(){ throw new UnsupportedOperationException("TODO: implement toString()"); }
+    public double monthlyPay() {
+        return hourlyRate * hoursPerMonth;
+     }
+    //  25. Ylikirjoita toString() ja equals(Object) (esim. sama nimi + sama alatyyppi).
+    @Override
+    public String toString() {
+            return "HourlyEmployee{name='" + name + "', hourlyRate=" + hourlyRate +
+               ", hoursPerMonth=" + hoursPerMonth + "}";
+    }
 }

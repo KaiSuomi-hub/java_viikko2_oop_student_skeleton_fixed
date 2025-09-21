@@ -11,7 +11,7 @@
  *  - Älä käytä ArrayListiä tai muita kokoelmia.
  *  - Ei käyttäjän syötteitä metodeissa; testaa `main()`ista.
  */
-
+// Muista ajaa ctrl+shit+p "java: clean java language workspace" jos testi feilaa aiempien duunien vuoksi
 package fi.viikko2.task03;
 
 public class Main {
